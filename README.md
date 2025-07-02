@@ -1,7 +1,5 @@
 # 🔗 Gerador de Links para WhatsApp
 
-![Banner do Gerador de Links para WhatsApp](https://i.imgur.com/C4OQQ4B.png)
-
 Uma ferramenta web simples e prática para criar links diretos de conversa para o WhatsApp, com a opção de adicionar uma mensagem personalizada. Desenvolvido para ser uma solução rápida e confiável, este gerador já auxilia diversos usuários e profissionais a otimizarem sua comunicação digital.
 
 **Acesse a ferramenta ao vivo:** [**geradordelinksparawhatsapp.pontin.dev**](https://geradordelinksparawhatsapp.pontin.dev/)
