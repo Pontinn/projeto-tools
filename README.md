@@ -1,6 +1,6 @@
 # 🔗 Gerador de Links para WhatsApp
 
-Uma ferramenta web simples e prática para criar links diretos de conversa para o WhatsApp, com a opção de adicionar uma mensagem personalizada. Desenvolvido para ser uma solução rápida e confiável, este gerador já auxilia diversos usuários e profissionais a otimizarem sua comunicação digital.
+Uma ferramenta web moderna e performática para criar links diretos de conversa para o WhatsApp, com a opção de adicionar uma mensagem personalizada. Desenvolvido para ser uma solução rápida e confiável, este gerador já auxilia diversos usuários e profissionais a otimizarem sua comunicação digital.
 
 **Acesse a ferramenta ao vivo:** [**geradordelinksparawhatsapp.pontin.dev**](https://geradordelinksparawhatsapp.pontin.dev/)
 
@@ -12,17 +12,18 @@ Uma ferramenta web simples e prática para criar links diretos de conversa para 
 -   **Mensagem Personalizada:** Adicione uma mensagem de saudação que será preenchida automaticamente quando o usuário clicar no link.
 -   **Interface Limpa:** Design simples e intuitivo, focado na usabilidade.
 -   **Responsivo:** Funciona perfeitamente em desktops e dispositivos móveis.
--   **Sem Dependências:** Construído com HTML, CSS e JavaScript puros, garantindo leveza e velocidade.
+-   **Alta Performance:** Construído com Next.js para garantir um carregamento rápido e uma experiência de usuário fluida.
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
-Este projeto foi construído com as tecnologias fundamentais da web:
+Este projeto foi construído com um stack de tecnologias modernas baseadas em JavaScript:
 
--   ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
--   ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+-   ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+-   ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 -   ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+-   ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
 ---
 
@@ -40,7 +41,7 @@ Usar o gerador é muito fácil:
 
 ## ⚙️ Como Funciona
 
-O JavaScript captura os valores inseridos nos campos de número e mensagem. Em seguida, ele formata esses dados na estrutura de URL oficial do WhatsApp (`https://wa.me/`), codificando a mensagem para garantir que espaços e caracteres especiais funcionem corretamente. O resultado é um link válido e pronto para uso.
+A aplicação utiliza **React** para gerenciar o estado dos campos de entrada (número e mensagem) de forma reativa. Ao clicar no botão "Gerar Link", a função correspondente formata os dados na estrutura de URL oficial do WhatsApp (`https://wa.me/`), codificando a mensagem para garantir que espaços e caracteres especiais funcionem corretamente. O resultado é um link válido e pronto para uso, exibido dinamicamente na interface.
 
 ---
 
