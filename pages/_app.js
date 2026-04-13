@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import "../styles/global.css";
 
 const NAV_ITEMS = [
-  { href: "/", label: "Link WhatsApp" },
+  { href: "/gerador-whatsapp", label: "Link WhatsApp" },
   { href: "/gerador-qrcode", label: "QR Code" },
   { href: "/roletada", label: "Roleta" },
 ];

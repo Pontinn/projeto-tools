@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
+import { Timer } from 'lucide-react';
 import Wheel from '../components/roleta/Wheel';
 import Panel from '../components/roleta/Panel';
 import ThemeToggle from '../components/roleta/ThemeToggle';
@@ -106,7 +107,7 @@ export default function Roletada() {
           onClick={() => setShowChrono(v => !v)}
           title="Abrir / fechar cronômetro"
         >
-          ⏱ Cronômetro
+          <Timer size={16} /> Cronômetro
         </button>
         <ThemeToggle theme={theme} onToggle={toggleTheme} />
       </div>

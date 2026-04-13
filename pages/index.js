@@ -1,164 +1,71 @@
-import React, { useEffect, useRef } from "react";
-import intlTelInput from "intl-tel-input";
-import "intl-tel-input/build/css/intlTelInput.css";
-import { useRouter } from "next/router";
+import Head from "next/head";
+import Link from "next/link";
+import { MessageCircle, QrCode, Shuffle } from "lucide-react";
 
-let whatsappLink;
-function Home() {
-  const router = useRouter();
-  const inputRef = useRef(null);
-  const messageRef = useRef(null);
-  let iti;
+const TOOLS = [
+  {
+    href: "/gerador-whatsapp",
+    Icon: MessageCircle,
+    name: "Link WhatsApp",
+    description:
+      "Crie links diretos para iniciar conversas no WhatsApp com mensagem personalizada, sem precisar salvar o contato.",
+    accent: "#25D366",
+    gradient: "linear-gradient(135deg, #25D366, #128C7E)",
+  },
+  {
+    href: "/gerador-qrcode",
+    Icon: QrCode,
+    name: "Gerador de QR Code",
+    description:
+      "Gere QR Codes em lote a partir de múltiplas URLs. Exporte em PNG, SVG ou PDF e baixe tudo em um único .zip.",
+    accent: "#34B7F1",
+    gradient: "linear-gradient(135deg, #34B7F1, #1a6fa8)",
+  },
+  {
+    href: "/roletada",
+    Icon: Shuffle,
+    name: "Roleta",
+    description:
+      "Roleta interativa para sorteios e dinâmicas em grupo. Com modo eliminação, cronômetro e persistência local.",
+    accent: "#a855f7",
+    gradient: "linear-gradient(135deg, #a855f7, #7c3aed)",
+  },
+];
 
-  useEffect(() => {
-    if (inputRef.current) {
-      iti = intlTelInput(inputRef.current, {
-        initialCountry: "br",
-        loadUtils: () => import("intl-tel-input/build/js/utils"),
-      });
-    }
-
-    return () => {
-      if (iti) {
-        iti.destroy();
-      }
-    };
-  }, []);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (iti) {
-      const fullNumber = iti.getNumber();
-      //codifica a mensagem para ser enviada via URL
-      const encodedMessage = encodeURI(messageRef.current.value);
-      whatsappLink = `https://api.whatsapp.com/send?phone=${fullNumber}&text=${encodedMessage}`;
-      router.push({
-        pathname: "/link-gerado",
-        query: { link: whatsappLink },
-      });
-    }
-  };
-
+export default function HomePage() {
   return (
-    <div className="main-div">
-      <section id="home">
-        <h1>GERADOR DE LINKS PARA WHATSAPP</h1>
-      </section>
-      {/* FORM */}
-      <section id="form" className="container">
-        <div className="form-div">
-          <h3>
-            Preencha os campos abaixo e <br />
-            gere seu link personalizado!
-          </h3>
-          <form onSubmit={handleSubmit}>
-            <input type="tel" id="phone" ref={inputRef} />
-            <textarea
-              id="message"
-              placeholder="Digite sua mensagem"
-              ref={messageRef}
-            ></textarea>
-            <button className="submit-button" type="submit">
-              Gerar link
-            </button>
-            <p className="form-alert">
-              <strong>Atenção:</strong> Este site não armazena nenhum dado
-              inserido nos campos acima. O link gerado é temporário e será
-              excluído após o uso.
-            </p>
-          </form>
-        </div>
-        {/* FORM TEXT */}
-        <div className="form-text">
-          <ul>
-            <li className="listed-text">
-              <strong>Vantagens ao gerar seu link personalizado:</strong>
-            </li>
-            <li className="listed-text">
-              <strong>Facilidade e agilidade na comunicação:</strong> <br /> Com
-              um link direto para o WhatsApp, os usuários podem iniciar uma
-              conversa imediatamente, sem precisar salvar o número ou passar por
-              múltiplos passos. Isso melhora a experiência do cliente e torna a
-              comunicação mais rápida e fluida.
-            </li>
-            <li className="listed-text">
-              <strong>Melhoria no marketing e no atendimento:</strong> <br />{" "}
-              Empresas podem incluir o link em campanhas de marketing, e-mails,
-              redes sociais, ou até mesmo em cartões de visita. Isso facilita o
-              contato direto com potenciais clientes, agilizando o atendimento e
-              aumentando as chances de conversões.
-            </li>
-            <li className="listed-text">
-              <strong>Personalização e praticidade:</strong> <br /> O link
-              gerado pode ser personalizado, como por exemplo, com uma mensagem
-              inicial predefinida (ex: “Oi, estou interessado no seu produto”).
-              Isso otimiza a interação e garante que o usuário tenha uma
-              experiência mais objetiva desde o primeiro contato.
-            </li>
-          </ul>
-        </div>
-      </section>
-      {/* MESSAGE SUGGESTION */}
-      <section className="message-indication container-column">
-        <h1>
-          <strong>
-            Como iniciar uma mensagem no WhatsApp de forma eficaz?
-          </strong>
+    <div className="home-page">
+      <Head>
+        <title>Pontin.dev TOOLS</title>
+        <meta name="description" content="Ferramentas web simples, rápidas e gratuitas." />
+      </Head>
+
+      <section className="home-hero">
+        <h1 className="home-hero-title">
+          pontin.dev<span className="blinking">|</span> tools
         </h1>
-        <p className="text-align-center">
-          Uma saudação adequada é educada e objetiva, ajustando-se ao contexto
-          da conversa. Em situações profissionais, opte por um tom mais formal e
-          respeitoso. Já em interações pessoais, seja amigável e descontraído.
-          Mencionar o nome do destinatário demonstra cuidado e torna a
-          comunicação mais pessoal e receptiva.
-        </p>
-        <div className="example-display">
-          <div className="example-box">
-            <h3>Para atendimento profissional:</h3>
-            <p>"Olá! Gostaria de mais informações sobre os seus serviços."</p>
-            <p>
-              "Olá! Poderia me informar sobre as opções disponíveis para
-              [assunto]?"
-            </p>
-            <p>
-              "Boa tarde! Gostaria de agendar um horário para discutir
-              [assunto]."
-            </p>
-          </div>
-          <div className="example-box">
-            <h3>Para vendas ou suporte:</h3>
-            <p>
-              "Oi! Tenho interesse no produto/serviço e gostaria de saber mais
-              detalhes."
-            </p>
-            <p>
-              "Oi! Tenho uma dúvida sobre [produto/serviço]. Pode me ajudar?"
-            </p>
-            <p>
-              "Olá! Gostaria de saber o preço e as condições para
-              [produto/serviço]."
-            </p>
-          </div>
-          <div className="example-box">
-            <h3>Para contatos gerais:</h3>
-            <p>
-              "Olá! Estou entrando em contato através do seu WhatsApp. Podemos
-              conversar?"
-            </p>
-            <p>
-              "Oi! Encontrei seu número e gostaria de conversar sobre
-              [assunto]."
-            </p>
-            <p>
-              "Olá! Gostaria de falar com você sobre algo importante. Podemos
-              conversar?"
-            </p>
-          </div>
-        </div>
+        <p className="home-hero-sub">Ferramentas simples, rápidas e gratuitas.</p>
       </section>
-      {/* ADS */}
+
+      <section className="home-tools">
+        {TOOLS.map(({ href, Icon, name, description, accent, gradient }) => (
+          <Link
+            key={href}
+            href={href}
+            className="tool-card"
+            style={{ "--accent": accent }}
+          >
+            <span className="tool-card-icon">
+              <Icon size={32} color={accent} strokeWidth={1.75} />
+            </span>
+            <h2 className="tool-card-name">{name}</h2>
+            <p className="tool-card-desc">{description}</p>
+            <span className="tool-card-cta" style={{ background: gradient }}>
+              Usar ferramenta →
+            </span>
+          </Link>
+        ))}
+      </section>
     </div>
   );
 }
-export { whatsappLink };
-export default Home;

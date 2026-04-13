@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import jsPDF from 'jspdf';
 import JSZip from 'jszip';
+import ThemeToggle from '../components/roleta/ThemeToggle';
 
 const HISTORY_KEY = 'qrcode_history';
 const THEME_KEY = 'qrcode_theme';
@@ -211,13 +212,7 @@ export default function GeradorQrCode() {
       </Head>
 
       <div className="qr-controls-bar">
-        <button
-          className={`qr-theme-toggle ${theme}`}
-          onClick={() => setTheme(t => t === 'dark' ? 'light' : 'dark')}
-          title={theme === 'dark' ? 'Modo claro' : 'Modo noturno'}
-        >
-          {theme === 'dark' ? '☀️' : '🌙'}
-        </button>
+        <ThemeToggle theme={theme} onToggle={() => setTheme(t => t === 'dark' ? 'light' : 'dark')} />
       </div>
 
       <main className="qr-main">
