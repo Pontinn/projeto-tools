@@ -2,6 +2,7 @@ import "intl-tel-input/build/css/intlTelInput.css";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
 import "../styles/global.css";
 
@@ -13,6 +14,11 @@ const NAV_ITEMS = [
 
 function App({ Component, pageProps }) {
   const router = useRouter();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [router.pathname]);
 
   return (
     <div id="app">
@@ -24,17 +30,27 @@ function App({ Component, pageProps }) {
         <a href="/" className="logo">
           pontin.dev<span className="blinking">|</span>
         </a>
-        <nav className="nav">
+        <nav className={`nav ${menuOpen ? "nav-open" : ""}`}>
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className={`nav-link ${router.pathname === item.href ? "active" : ""}`}
+              onClick={() => setMenuOpen(false)}
             >
               {item.label}
             </Link>
           ))}
         </nav>
+        <button
+          className={`hamburger ${menuOpen ? "hamburger-open" : ""}`}
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-label="Menu"
+        >
+          <span />
+          <span />
+          <span />
+        </button>
       </section>
       <Component {...pageProps} />
       <section className="footer">

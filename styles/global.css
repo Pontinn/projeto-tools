@@ -35,32 +35,35 @@ html {
 /* NAV */
 .nav {
   display: flex;
-  gap: 6px;
+  align-items: center;
+  gap: 2px;
 }
 
 .nav-link {
   color: rgba(255, 255, 255, 0.5);
   font-family: sora, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 500;
   text-decoration: none;
-  padding: 4px 0;
-  margin: 0 12px;
-  transition: color 0.2s;
+  padding: 4px 9px;
+  border-radius: 5px;
+  transition: color 0.2s, background 0.2s;
   white-space: nowrap;
-  border-bottom: 2px solid transparent;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 .nav-link:hover {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.07);
 }
 
 .nav-link.active {
   color: white;
-  border-bottom-color: white;
+  background: rgba(255, 255, 255, 0.12);
 }
 
-.header a {
+.header .logo {
   color: white;
   font-family: sora, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 24px;
@@ -68,7 +71,7 @@ html {
   text-decoration: none;
 }
 
-.header a:hover {
+.header .logo:hover {
   cursor: pointer;
 }
 
@@ -1295,7 +1298,73 @@ ul {
   .roleta-controls-bar { padding: 10px 16px; }
 }
 
+/* Hamburger button — hidden on desktop */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  z-index: 101;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  transform-origin: center;
+}
+
+/* X animation when open */
+.hamburger-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger-open span:nth-child(2) { opacity: 0; }
+.hamburger-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 /* Nav responsive */
 @media (max-width: 600px) {
-  .nav-link { padding: 5px 10px; font-size: 12px; }
+  .hamburger {
+    display: flex;
+  }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    right: 0;
+    background-color: #111111;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 8px 0 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    z-index: 100;
+  }
+
+  .nav.nav-open {
+    display: flex;
+  }
+
+  .nav-link {
+    padding: 14px 24px;
+    margin: 0;
+    font-size: 15px;
+    border-bottom: none;
+    border-left: 3px solid transparent;
+  }
+
+  .nav-link.active {
+    border-bottom-color: transparent;
+    border-left-color: white;
+  }
+
+  .nav-link:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
 }
