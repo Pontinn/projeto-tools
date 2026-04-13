@@ -2,7 +2,7 @@
 
 Uma coleção de ferramentas web modernas e performáticas para otimizar a comunicação e o dia a dia digital. Desenvolvido para ser uma solução rápida e confiável, o projeto já auxilia diversos usuários e profissionais.
 
-**Acesse as ferramentas ao vivo:** [**geradordelinksparawhatsapp.pontin.dev**](https://geradordelinksparawhatsapp.pontin.dev/)
+**Acesse as ferramentas ao vivo:** [**tools.pontin.dev**](https://tools.pontin.dev/)
 
 ---
 
@@ -65,7 +65,7 @@ Este projeto foi construído com um stack de tecnologias modernas baseadas em Ja
 
 ### 🔗 Gerador de Links para WhatsApp
 
-1.  **Acesse a página:** Abra o site [**geradordelinksparawhatsapp.pontin.dev**](https://geradordelinksparawhatsapp.pontin.dev/).
+1.  **Acesse a página:** Abra o site [**tools.pontin.dev**](https://tools.pontin.dev/).
 2.  **Digite o Número:** Insira o número de telefone completo, incluindo o código do país e o DDD (ex: `5511999998888`).
 3.  **Digite a Mensagem (Opcional):** Escreva a mensagem que você deseja que apareça ao iniciar a conversa.
 4.  **Clique em "Gerar Link":** O seu link personalizado aparecerá logo abaixo.
